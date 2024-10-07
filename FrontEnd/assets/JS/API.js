@@ -30,39 +30,30 @@ export async function loginUser(email, password) {
 
 export async function getProjects() {
   try {
-    const response = await fetch(`${API_BASE_URL}/works`);
-    const data = await response.json();
-
-    if (Array.isArray(data)) {
-      return data; // Retourner la liste des projets
-    } else {
-      throw new Error("La réponse n'est pas un tableau");
+    const response = await fetch(`${API_BASE_URL}/works`); // URL de ton API pour les projets
+    if (!response.ok) {
+      throw new Error(`Erreur : ${response.status}`); // Gestion des erreurs
     }
+    const projects = await response.json();
+    console.log("Projets récupérés :", projects); // Vérifier la réponse
+    return projects;
   } catch (error) {
-    console.error("Erreur lors de la récupération des projets :", error);
-    throw error;
+    console.error("Erreur lors de la récupération des projets:", error);
+    return []; // Retourner un tableau vide en cas d'erreur pour éviter des plantages
   }
 }
 
-getProjects();
-
-export async function categories() {
+export async function getCategories() {
   try {
-    const response = await fetch(`${API_BASE_URL}/categories`);
-
+    const response = await fetch(`${API_BASE_URL}/categories`); // URL de ton API pour les catégories
     if (!response.ok) {
-      throw new Error(`Erreur HTTP : ${response.status}`);
+      throw new Error(`Erreur : ${response.status}`); // Gestion des erreurs
     }
-
-    const data = await response.json();
-
-    if (Array.isArray(data)) {
-      return data;
-    } else {
-      throw new Error("La réponse n'est pas un tableau");
-    }
+    const categories = await response.json();
+    console.log("Catégories récupérées :", categories); // Vérifier la réponse
+    return categories;
   } catch (error) {
-    console.error("Erreur lors de la mise en place des catégories :", error);
-    throw error;
+    console.error("Erreur lors de la récupération des catégories:", error);
+    return []; // Retourner un tableau vide en cas d'erreur
   }
 }

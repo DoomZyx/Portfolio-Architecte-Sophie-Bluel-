@@ -206,58 +206,48 @@ li:hover {
   margin-bottom: 1em;
 }
 
-.filters,
-.all,
-.objects,
-.appartment,
-.restaurantsandhotel {
+.filters {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
 }
 
-.all:hover,
-.objects:hover,
-.appartment:hover,
-.restaurantsandhotel:hover {
-  color: white;
-  background-color: #1d6154;
-}
-
 .filters {
   gap: 10px;
+}
+
+.filter-button {
+  font-family: "Syne";
+  background-color: white;
+  border-radius: 60px;
+  border: 1px solid #1d6154;
+  padding: 10px;
+  font-weight: 600;
   margin-bottom: 20px;
   color: #1d6154;
   font-size: 16px;
 }
 
-.all,
-.objects {
-  font-family: "Syne";
+.filter-button[data-category-id="all"] {
   width: 100px;
-  height: 37px;
-  border: 1.5px solid #1d6154;
-  border-radius: 60px;
-  font-weight: 700;
 }
 
-.appartment {
-  font-family: "Syne";
-  width: 150px;
-  height: 37px;
-  border: 1.5px solid #1d6154;
-  border-radius: 60px;
-  font-weight: 700;
+.filter-button[data-category-id="1"] {
+  width: 100px;
 }
 
-.restaurantsandhotel {
-  font-family: "Syne";
-  width: 195px;
-  height: 37px;
-  border: 1.5px solid #1d6154;
-  border-radius: 60px;
-  font-weight: 700;
+.filter-button[data-category-id="2"] {
+  width: 147px;
+}
+
+.filter-button[data-category-id="3"] {
+  width: 220px;
+}
+
+.filter-button:hover {
+  color: white;
+  background-color: #1d6154;
 }
 
 .gallery {
