@@ -188,7 +188,8 @@ h2 {
   margin-bottom: 25px;
 }
 
-.Login {
+.Login,
+form {
   display: flex;
   flex-direction: column;
 }
@@ -212,7 +213,7 @@ label {
   padding-bottom: 10px;
 }
 
-button {
+input[type="submit"] {
   font-family: "Syne";
   width: 179px;
   height: 36px;
