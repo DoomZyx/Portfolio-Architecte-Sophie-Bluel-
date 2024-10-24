@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { getProjects, getCategories } from "./API.js";
 
 let categoriesList = [];

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { getProjects } from "./API.js";
 import { displayProjects, displayCategories, init } from "./gallery.js";
 
@@ -213,20 +214,19 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
+    // Sélection des ID du DOM pour valider la requête API POST Works
     const formData = new FormData();
     formData.append("image", file);
     formData.append("title", photoName);
     formData.append("category", photoCategory);
 
     try {
-      const token = sessionStorage.getItem("token"); // Récupérer le token d'authentification
+      // Récupérer le token d'authentification et l'enregistre
+      const token = sessionStorage.getItem("token");
       if (!token) {
         console.error("Token non trouvé, l'utilisateur n'est pas authentifié.");
         return;
       }
-      console.log("Titre de la photo:", photoName);
-      console.log("ID de la catégorie:", photoCategory);
-      console.log("Fichier image:", file);
 
       // Envoi des données à l'API
       const response = await fetch("http://localhost:5678/api/works", {
@@ -237,25 +237,33 @@ document.addEventListener("DOMContentLoaded", function () {
         },
       });
 
+      // Si c'est ok, photo et info transferer à l'API et rafraichissement
       if (response.ok) {
         const result = await response.json();
         console.log("Photo ajoutée avec succès :", result);
+
         // Fermer le modal après succès
         closeAllModals();
 
+        // Rafraichissement des données des tableaux
         init();
 
+        // Rafraichissemnt du formulaire
         resetform();
 
-        // Recharge la galerie pour afficher la nouvelle photo
-        loadphoto(); // Recharge la galerie après ajout de la photo
+        // Recharge la galerie de la modale pour afficher la nouvelle photo
+        loadphoto();
+
         displayProjects(); // Recharge la galerie principal
+
+        // Sinon erreur lors de l'ajout
       } else {
         console.error(
           "Erreur lors de l'ajout de la photo :",
           response.statusText
         );
       }
+      // Ou erreur lors de la requête
     } catch (error) {
       console.error("Erreur lors de la requête :", error);
     }

@@ -619,7 +619,7 @@ form select {
 .gallery {
   display: grid;
   grid-template-columns: repeat(3, 1fr); /* 3 colonnes de même largeur */
-  grid-gap: 20px; /* Espacement entre les éléments de la grille */
+  grid-gap: 10px; /* Espacement entre les éléments de la grille */
   width: 100%;
 }
 
