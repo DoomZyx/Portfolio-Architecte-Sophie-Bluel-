@@ -84,26 +84,32 @@ function AdminConnected() {
 }
 
 // Mise à jour de l'interface utilisateur, y compris la bannière d'édition
-function update() {
-  const authButton = document.getElementById("authButton");
-  const addPhotoBtn = document.getElementById("addPhoto");
-  const editBanner = document.getElementById("editBanner");
+ function update() {
+   const authButton = document.getElementById("authButton");
+   const addPhotoBtn = document.getElementById("addPhoto");
+   const editBanner = document.getElementById("editBanner");
+   const modifierButton = document.querySelector(".modifier"); // Sélectionne le bouton "Modifier"
 
-  const isConnected = AdminConnected();
+   const isConnected = AdminConnected(); // Vérifie si l'admin est connecté
 
-  if (authButton) {
-    authButton.textContent = isConnected ? "logout" : "login";
-  }
+   if (authButton) {
+     authButton.textContent = isConnected ? "logout" : "login";
+   }
 
-  if (addPhotoBtn) {
-    addPhotoBtn.style.display = isConnected ? "inline-block" : "none";
-  }
+   if (addPhotoBtn) {
+     addPhotoBtn.style.display = isConnected ? "inline-block" : "none";
+   }
 
-  // Affiche la bannière de mode édition si l'admin est connecté
-  if (editBanner) {
-    editBanner.style.display = isConnected ? "block" : "none";
-  }
-}
+   // Affiche la bannière de mode édition si l'admin est connecté
+   if (editBanner) {
+     editBanner.style.display = isConnected ? "block" : "none";
+   }
+
+   // Affiche ou cache le bouton "Modifier" en fonction de la connexion de l'admin
+   if (modifierButton) {
+     modifierButton.style.display = isConnected ? "block" : "none";
+   }
+ }
 
 // Appel de la fonction de mise à jour pour vérifier l'état de connexion
 update();

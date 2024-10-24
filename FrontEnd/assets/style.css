@@ -281,7 +281,7 @@ li:hover {
   padding: 20px;
   border: 1px solid #888;
   width: 100%;
-  height: 65%;
+  height: 75%;
   max-width: 500px;
   border-radius: 5px;
   box-sizing: border-box;
@@ -392,6 +392,36 @@ li:hover {
   background-color: #1d6154;
 }
 
+/* Bouton de suppression */
+.photo-item {
+  position: relative;
+  display: inline-block;
+  margin: 10px;
+}
+
+.delete-photo-btn {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  background-color: black;
+  color: white;
+  border: none;
+  width: 30px;
+  height: 30px;
+  font-size: 16px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.delete-photo-btn i {
+  pointer-events: none; /* Empêche l'icône de bloquer le clic */
+}
+
+.delete-photo {
+  display: none;
+}
+
+
 /* 2e modal  */
 /* Style général pour masquer le modal au départ */
 .modal {
@@ -462,12 +492,13 @@ li:hover {
 
 #imagePreview {
   position: absolute;
-  bottom: 295px;
-  left: 120px;
-  max-width: 50%;
-  max-height: 50%;
+  bottom: 372px;
+  left: 190px;
+  max-width: 25%;
+  max-height: 24.5%;
   object-fit: cover; /* L'image remplit le conteneur tout en conservant ses proportions */
   display: none;
+  box-sizing: border-box;
 }
 
 #photoIcon {
@@ -552,7 +583,7 @@ form select {
 
 .line2 {
   position: relative;
-  top: 20px;
+  top: 40px;
   left: 30px;
   width: 85%;
   height: 0.1vh;
@@ -565,15 +596,15 @@ form select {
   border: none;
   cursor: pointer;
   padding: 10px;
-  margin-left: 115px;
-  margin-top: 40px;
+  margin-left: 112px;
+  margin-top: 80px;
   font-size: 16px;
   width: 237px;
   border-radius: 50px;
 }
 
-form input[type="submit"]:hover {
-  background-color: #555;
+#addPhotoForm input[type="submit"]:hover {
+  background-color: #1d6154
 }
 
 /* Styles pour la catégorie et le titre */
@@ -584,17 +615,21 @@ form input[type="submit"]:hover {
 }
 /* */
 
+/* Gallery layout */
 .gallery {
-  width: 100%;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-column-gap: 20px;
-  grid-row-gap: 20px;
+  grid-template-columns: repeat(3, 1fr); /* 3 colonnes de même largeur */
+  grid-gap: 20px; /* Espacement entre les éléments de la grille */
+  width: 100%;
 }
 
+/* Image styling */
 .gallery img {
   width: 100%;
+  height: 505px; 
+  object-fit: cover;/* Remplit l'image dans son conteneur sans distorsion */
 }
+
 #contact {
   width: 50%;
   margin: auto;

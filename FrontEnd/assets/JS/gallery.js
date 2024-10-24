@@ -2,7 +2,8 @@ import { getProjects, getCategories } from "./API.js";
 
 let categoriesList = [];
 let projectsList = [];
-async function init() {
+export async function init() {
+  console.log(init);
   categoriesList = await getCategories();
   projectsList = await getProjects();
 
@@ -10,10 +11,12 @@ async function init() {
   displayProjects();
 }
 
-function displayCategories() {
+export function displayCategories() {
   console.log("Catégories récupérées :", categoriesList);
 
   const filters = document.querySelector(".filters");
+
+  filters.innerHTML = "";
 
   // Bouton pour afficher tous les projets
   const allButton = document.createElement("button");
@@ -39,7 +42,7 @@ function displayCategories() {
   });
 }
 
-function displayProjects(categoryId = "all") {
+export function displayProjects(categoryId = "all") {
   console.log("Projets récupérés :", projectsList);
 
   const gallery = document.querySelector(".gallery");
