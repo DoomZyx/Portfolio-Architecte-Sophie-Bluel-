@@ -3,8 +3,8 @@ import { getProjects, getCategories } from "./API.js";
 
 let categoriesList = [];
 let projectsList = [];
+
 export async function init() {
-  console.log(init);
   categoriesList = await getCategories();
   projectsList = await getProjects();
 
@@ -13,8 +13,6 @@ export async function init() {
 }
 
 export function displayCategories() {
-  console.log("Catégories récupérées :", categoriesList);
-
   const filters = document.querySelector(".filters");
 
   filters.innerHTML = "";
@@ -44,8 +42,6 @@ export function displayCategories() {
 }
 
 export function displayProjects(categoryId = "all") {
-  console.log("Projets récupérés :", projectsList);
-
   const gallery = document.querySelector(".gallery");
   gallery.innerHTML = "";
 

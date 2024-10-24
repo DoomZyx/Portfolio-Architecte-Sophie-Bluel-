@@ -2,18 +2,17 @@
 import { loginUser } from "./API.js";
 import { openModal } from "./modal.js"; // Importation de la fonction openModal
 
-console.log("auth.js a été chargé");
 
 // DOMContentLoaded
 document.addEventListener("DOMContentLoaded", function () {
   // 1. Gestion du formulaire de login
   const loginForm = document.getElementById("loginForm");
-  console.log(loginForm);
 
   if (loginForm) {
     loginForm.addEventListener("submit", async (event) => {
+      
       event.preventDefault(); // Empêche le rechargement de la page par défaut
-      console.log("Formulaire soumis");
+
       await authentificationAdmin(); // Appelle la fonction d'authentification
     });
   }
@@ -23,14 +22,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
   if (authButton) {
     authButton.addEventListener("click", function () {
-      console.log("Bouton Login cliqué");
 
       if (AdminConnected()) {
-        console.log("Déconnexion en cours...");
         sessionStorage.removeItem("token"); // Déconnexion
         update(); // Met à jour l'interface après la déconnexion
       } else {
-        console.log("Redirection vers la page de login");
         window.location.href = "/login.html"; // Redirection vers la page de login
       }
     });
@@ -52,18 +48,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // Fonction d'authentification
 async function authentificationAdmin() {
-  console.log("authentificationAdmin a été appelée");
   try {
     const adminEmail = document.getElementById("email").value;
     const adminPassword = document.getElementById("password").value;
 
     const result = await loginUser(adminEmail, adminPassword);
-    console.log("Résultat de la connexion :", result);
 
     if (result && result.token) {
-      console.log("Connexion réussie, token reçu :", result.token);
       sessionStorage.setItem("token", result.token);
-      console.log("Token stocké :", sessionStorage.getItem("token"));
 
       // Redirection après une petite pause
       setTimeout(() => {
@@ -80,7 +72,6 @@ async function authentificationAdmin() {
 // Vérification si l'admin est connecté
 function AdminConnected() {
   const token = sessionStorage.getItem("token");
-  console.log("Admin Token (récupéré) :", token);
   return token !== null;
 }
 

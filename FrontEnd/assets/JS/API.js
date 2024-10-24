@@ -35,7 +35,6 @@ export async function getProjects() {
       throw new Error(`Erreur : ${response.status}`); // Gestion des erreurs
     }
     const projects = await response.json();
-    console.log("Projets récupérés :", projects); // Vérifier la réponse
     return projects;
   } catch (error) {
     console.error("Erreur lors de la récupération des projets:", error);
@@ -50,7 +49,6 @@ export async function getCategories() {
       throw new Error(`Erreur : ${response.status}`); // Gestion des erreurs
     }
     const categories = await response.json();
-    console.log("Catégories récupérées :", categories); // Vérifier la réponse
     return categories;
   } catch (error) {
     console.error("Erreur lors de la récupération des catégories:", error);

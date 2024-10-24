@@ -8,10 +8,7 @@ const photoModal = document.getElementById("photoModal");
 const addPhotoBtn = document.getElementById("addPhoto"); // Bouton "Modifier"
 const closeModal = document.getElementsByClassName("close")[0];
 
-// Définition correcte de la fonction openModal et exportation
 export function openModal() {
-  console.log("openModal a été appelé"); // Log pour vérifier l'appel
-
   if (photoModal) {
     photoModal.style.display = "block"; // Affiche le modal
     loadphoto(); // Charge les photos dans le modal
@@ -22,8 +19,6 @@ export function openModal() {
 
 // Fonction pour charger et afficher les photos
 async function loadphoto() {
-  console.log("Chargement des photos...");
-
   try {
     const response = await fetch(`http://localhost:5678/api/works`);
     const photos = await response.json();
@@ -83,8 +78,6 @@ async function deletePhoto(photoId) {
     });
 
     if (response.ok) {
-      console.log("Photo supprimée avec succès");
-
       init();
 
       loadphoto(); // Recharge la galerie après suppression
@@ -170,7 +163,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Fonction de gestion du clic sur le bouton pour ouvrir le sélecteur de fichier
   function handleButtPhotoClick() {
-    console.log("Click sur .ButtPhoto"); // Log pour vérifier que le click est déclenché une seule fois
     photoFileInput.click(); // Ouvre l'explorateur de fichiers
   }
 
@@ -187,7 +179,7 @@ document.addEventListener("DOMContentLoaded", function () {
         imagePreview.src = e.target.result; // Met à jour l'aperçu de l'image
         imagePreview.style.display = "block";
         ButtPhoto.style.display = "none"; // Affiche l'aperçu
-        console.log("Image affichée dans le conteneur"); // Vérification
+        console.log("Image affichée dans la galerie principal"); // Vérification
       };
 
       reader.readAsDataURL(file); // Lire le fichier sélectionné
@@ -240,7 +232,6 @@ document.addEventListener("DOMContentLoaded", function () {
       // Si c'est ok, photo et info transferer à l'API et rafraichissement
       if (response.ok) {
         const result = await response.json();
-        console.log("Photo ajoutée avec succès :", result);
 
         // Fermer le modal après succès
         closeAllModals();
