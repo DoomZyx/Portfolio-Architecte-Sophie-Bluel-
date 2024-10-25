@@ -113,6 +113,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const photoModal = document.getElementById("photoModal");
   const addPhotoModal = document.getElementById("addPhotoModal");
   const addGalleryPhotoButton = document.getElementById("addGalleryPhoto");
+  const backArrow = document.querySelector(".back-arrow");
   const closeButtons = document.getElementsByClassName("close");
   const photoFileInput = document.getElementById("photoFile");
   const imagePreview = document.getElementById("imagePreview");
@@ -142,6 +143,12 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log("Bouton 'Ajouter une photo' cliqué");
     closeAllModals(); // Fermer le premier modal
     addPhotoModal.style.display = "block"; // Ouvrir le deuxième modal
+  });
+
+  // Reviens à la première modale lors du clic sur la flèche
+  backArrow.addEventListener("click", function () {
+    document.getElementById("addPhotoModal").style.display = "none";
+    document.getElementById("photoModal").style.display = "block";
   });
 
   // Fermer les modals lorsqu'on clique sur la croix

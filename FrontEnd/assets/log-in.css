@@ -245,3 +245,10 @@ a {
 .passwordforgotten:hover {
   border-bottom: 1px solid;
 }
+
+#error-message {
+  color: red;
+  display: none;
+  margin-left: 400px;
+  margin-top: 50px;
+}

@@ -272,10 +272,13 @@ li:hover {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   box-sizing: border-box;
-  overflow: auto;
 }
 
 .modal-content {
+  overflow-y: auto;
+  overflow-x: hidden;
+  /* Masquer scrollbar (Firefox) */
+  scrollbar-width: none;
   background-color: #fefefe;
   margin: 15% auto;
   padding: 20px;
@@ -287,11 +290,17 @@ li:hover {
   box-sizing: border-box;
 }
 
+/* Masquer scrollbar sur Chrome et Safari */
+.modal-content::-webkit-scrollbar {
+  display: none;
+}
+
 .Modal1-title {
   font-family: "Work Sans";
   color: black;
   padding: 15px;
   font-weight: 400;
+  margin-left: 18px;
 }
 
 .modal #gallery {
@@ -300,7 +309,7 @@ li:hover {
   gap: 0px;
   flex-wrap: wrap;
   box-sizing: border-box;
-  padding-left: 25px;
+  padding-left: 60px;
 }
 
 .photo-item img {
@@ -310,8 +319,8 @@ li:hover {
 
 .line {
   position: relative;
-  top: 60px;
-  left: 40px;
+  top: 10vh;
+  left: 50px;
   width: 80%;
   height: 0.1vh;
   background-color: lightgray;
@@ -319,15 +328,14 @@ li:hover {
 
 #addGalleryPhoto {
   font-family: "Syne";
-  position: relative;
-  left: 115px;
-  top: 125px;
   border: none;
   background-color: #1d6154;
   border-radius: 60px;
   color: white;
   width: 237px;
   height: 36px;
+  margin-left: 120px;
+  margin-top: 125px;
 }
 
 
@@ -458,8 +466,8 @@ li:hover {
 /* Style pour la croix de fermeture */
 .close {
   position: absolute;
-  right: 35px;
-  top: 30px;
+  right: 25px;
+  top: 23px;
   font-size: 30px;
   color: black;
   cursor: pointer;
@@ -476,6 +484,7 @@ li:hover {
 
 .Modal2-title {
   margin-top: 30px;
+  margin-left: 10px;
   padding: 15px;
   font-weight: 400;
   font-family: "Work Sans";
@@ -488,25 +497,30 @@ li:hover {
 #photoTrigger {
   position: relative;
   width: 75%;
-  height: 165px; /* Hauteur fixe */
+  height: 170px; /* Hauteur fixe */
   background-color: #e0f0ff;
   text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-left: 55px;
+  margin-bottom: 20px;
   overflow: hidden; /* Masque le débordement de l'image */
 }
 
 #imagePreview {
-  position: absolute;
-  bottom: 328px;
-  left: 190px;
+  position: relative;
+  bottom: 195px;
+  left: 170px;
   max-width: 25%;
-  max-height: 26.2%;
+  max-height: 31%;
   object-fit: cover; /* L'image remplit le conteneur tout en conservant ses proportions */
   display: none;
   box-sizing: border-box;
+}
+
+#previewContainer {
+  position: absolute;
 }
 
 #photoIcon {
@@ -526,12 +540,19 @@ li:hover {
 
 /* Styles pour le formulaire */
 
+.fa-arrow-left {
+  position: relative;
+  left: 5px;
+  top: 10px;
+  font-size: 18px;
+}
+
 .fa-image {
   color: rgba(203, 214, 220, 1);
   font-size: 58px;
   position: relative;
   bottom: 30px;
-  left: 0px;
+  left: 5px;
 }
 
 .ButtPhoto {
@@ -546,7 +567,7 @@ li:hover {
   font-size: 14px;
   position: relative;
   left: 145px;
-  bottom: 80px;
+  bottom: 100px;
 }
 
 .Type_photo {
@@ -554,7 +575,7 @@ li:hover {
   font-size: 11px;
   position: relative;
   position: relative;
-  bottom: 70px;
+  bottom: 90px;
   left: 175px;
 }
 

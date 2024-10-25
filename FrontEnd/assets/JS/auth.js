@@ -48,26 +48,39 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // Fonction d'authentification
 async function authentificationAdmin() {
-  try {
-    const adminEmail = document.getElementById("email").value;
-    const adminPassword = document.getElementById("password").value;
+  const adminEmail = document.getElementById("email").value;
+  const adminPassword = document.getElementById("password").value;
+  const errorMessage = document.getElementById("error-message"); // Sélection du conteneur d'erreur
 
+  try {
+    // Appelle l'API pour tenter de se connecter
     const result = await loginUser(adminEmail, adminPassword);
 
+    // Vérifie immédiatement si un token est renvoyé
     if (result && result.token) {
+      // Enregistrement du token en session et redirection si authentification réussie
       sessionStorage.setItem("token", result.token);
+      errorMessage.style.display = "none"; // Cache le message d'erreur
+      errorMessage.textContent = "";
 
-      // Redirection après une petite pause
       setTimeout(() => {
         window.location.href = "/Frontend/index.html";
       }, 500);
     } else {
-      console.error("Erreur: La réponse API ne contient pas de token");
+      // Affiche le message d'erreur si le token est absent (échec de connexion)
+      errorMessage.textContent = "Identifiants incorrects. Veuillez réessayer.";
+      errorMessage.style.display = "block";
     }
   } catch (error) {
+    // Gestion des erreurs lors de l'appel à l'API
     console.error("Erreur lors de l'authentification de l'admin :", error);
+    errorMessage.textContent =
+      "Mauvais identifiants de connexion, veuillez réessayer.";
+    errorMessage.style.display = "block";
   }
 }
+
+
 
 // Vérification si l'admin est connecté
 function AdminConnected() {
